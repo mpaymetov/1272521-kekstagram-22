@@ -4,6 +4,8 @@ const PHOTOS_COUNT = 25;
 const LIKES_MIN = 15;
 const LIKES_MAX = 200;
 const AVATARS_COUNT = 6;
+const COMMENTS_MIN = 5;
+const COMMENTS_MAX = 10;
 
 const NAMES = ['Иван', 'Николай', 'Михаил', 'Алексей', 'Владимир', 'Сергей', 'Артем'];
 const MESSAGES = [
@@ -37,23 +39,24 @@ const getRandomArray = (array) => {
 
 const createRandomComment = () => {
   const randomAvatarNumber = getRandom(1, AVATARS_COUNT);
-  const commentAvatar = `img/avatar-${randomAvatarNumber}.svg`;
-  const commentMessage = getRandomArray(MESSAGES);
-  const commentName = getRandomArray(NAMES);
+  const avatar = `img/avatar-${randomAvatarNumber}.svg`;
+  const message = getRandomArray(MESSAGES);
+  const name = getRandomArray(NAMES);
   return {
     id: commentId++,
-    avatar: commentAvatar,
-    message: commentMessage,
-    name: commentName,
+    avatar,
+    message,
+    name,
   };
 };
 
 const createComments = () => {
   const comments = [];
-  do {
+  const commentsCount = getRandom(COMMENTS_MIN, COMMENTS_MAX);
+  for (let i = 0; i < commentsCount; i++) {
     const comment = createRandomComment();
     comments.push(comment);
-  } while (getRandom());
+  }
   return comments;
 };
 
@@ -64,18 +67,17 @@ const createPhotoData = (number) => {
   const comments = createComments();
   return {
     id: number,
-    url: url,
-    description: description,
-    likes: likes,
-    comments: comments,
+    url,
+    description,
+    likes,
+    comments,
   };
 };
 
 const createPhotoDataArray = (photosCount) => {
-  let photos = [];
+  const photos = [];
   for (let i = 1; i <= photosCount; i++) {
-    const photoDescription = createPhotoData(i);
-    photos.push(photoDescription);
+    photos.push(createPhotoData(i));
   }
   return photos;
 };
