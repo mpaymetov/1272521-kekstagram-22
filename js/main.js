@@ -1,7 +1,6 @@
 import {checkStringLenght} from './utils.js';
 import {createPhotoDataArray} from './data.js';
-
-const PHOTOS_COUNT = 25;
+import {PHOTOS_COUNT} from './settings.js';
 
 const maxStrLen = 5;
 const isStringLessMaxLen = checkStringLenght('Hello', maxStrLen);
