@@ -2,6 +2,7 @@ import {getRandom} from './utils.js';
 import {LIKES_MIN, LIKES_MAX, AVATARS_COUNT, COMMENTS_MIN, COMMENTS_MAX, NAMES, MESSAGES} from './settings.js';
 
 let commentId = 0;
+let photosData = {};
 
 const getRandomArray = (array) => {
   return array[getRandom(0, array.length - 1)];
@@ -44,12 +45,16 @@ const createPhotoData = (number) => {
   };
 };
 
-const createPhotoDataArray = (photosCount) => {
+const createPhotosData = (photosCount) => {
   const photos = [];
   for (let i = 1; i <= photosCount; i++) {
     photos.push(createPhotoData(i));
   }
-  return photos;
+  photosData = photos;
 };
 
-export {createPhotoDataArray};
+const getPhotosData = () => {
+  return photosData;
+};
+
+export {createPhotosData, getPhotosData};
