@@ -12,4 +12,12 @@ const checkStringLenght = (string = '', maxLenght = 0) => {
   return string.length <= maxLenght;
 };
 
-export {getRandom, checkStringLenght};
+const isEscEvent = (evt) => {
+  return evt.key === ('Escape' || 'Esc');
+};
+
+const isEnterEvent = (evt) => {
+  return evt.key === 'Enter';
+};
+
+export {getRandom, checkStringLenght, isEscEvent, isEnterEvent};

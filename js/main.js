@@ -1,13 +1,17 @@
 import {checkStringLenght} from './utils.js';
-import {createPhotoDataArray} from './data.js';
-import {renderPictures} from './pictures.js';
+import {createPhotosData} from './data.js';
+import {renderPictures, onPictureClick, onPictureEnterPress} from './gallery.js';
+
 import {PHOTOS_COUNT} from './settings.js';
 
 const maxStrLen = 5;
 const isStringLessMaxLen = checkStringLenght('Hello', maxStrLen);
-const photoArr = createPhotoDataArray(PHOTOS_COUNT);
-
-renderPictures(photoArr);
+createPhotosData(PHOTOS_COUNT);
+renderPictures();
 
 /* eslint-disable no-console */
 console.log(isStringLessMaxLen);
+
+const pictures = document.querySelectorAll('a.picture');
+pictures.forEach(element => element.addEventListener('click', onPictureClick));
+pictures.forEach(element => element.addEventListener('keydown', onPictureEnterPress));
