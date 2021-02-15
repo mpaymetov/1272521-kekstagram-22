@@ -8,6 +8,7 @@ const pictureTemplate = pictureTemplateBlock.content.querySelector('a.picture');
 
 const renderPicture = (photoData) => {
   let element = pictureTemplate.cloneNode(true);
+  element.dataset.photoId = photoData.id;
   element.querySelector('.picture__img').src = photoData.url;
   element.querySelector('.picture__comments').innerText = photoData.comments.length;
   element.querySelector('.picture__likes').innerText = photoData.likes;

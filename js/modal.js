@@ -67,13 +67,26 @@ const renderPictureModalData = (pictureData) => {
   bigPictureCommentsLoader.classList.add('hidden');
 };
 
-const openPictureModal = (evt) => {
+const getPhotoId = (evt) => {
+  const target = evt.target;
+  if (target.dataset.photoId !== undefined) {
+    return target.dataset.photoId;
+  } else {
+    const parentTarget = target.parentNode;
+    return parentTarget.dataset.photoId;
+  }
+};
 
-  /* eslint-disable no-console */
-  console.log(evt);
+const getPhotoDataById = (photoId) => {
   const photosData = getPhotosData();
-  const pictureData = photosData[0];
+  return photosData.find((element) => {
+    return element.id == photoId;
+  });
+};
 
+const openPictureModal = (evt) => {
+  const photoId = getPhotoId(evt);
+  const pictureData = getPhotoDataById(photoId);
   renderPictureModalData(pictureData);
 
   bigPictureBlock.classList.remove('hidden');
