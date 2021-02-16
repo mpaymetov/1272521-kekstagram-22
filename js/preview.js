@@ -1,4 +1,5 @@
 import {isEscEvent} from './utils.js';
+import {setPreviewDefaultScale} from './effect.js';
 
 const fileInput = document.querySelector('#upload-file');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
@@ -24,6 +25,8 @@ const closeUploadModal = () => {
 };
 
 const openUploadModal = () => {
+  setPreviewDefaultScale();
+
   imgUploadOverlay.classList.remove(hideClass);
   body.classList.add('modal-open');
 

@@ -93,7 +93,7 @@ const openPictureModal = (evt) => {
   body.classList.add('modal-open');
 
   bigPictureCancel.addEventListener('click', closePictureModal);
-  document.addEventListener('keydown', onPictureModalEscPress)
+  document.addEventListener('keydown', onPictureModalEscPress);
 };
 
 export {openPictureModal};
