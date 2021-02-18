@@ -1,5 +1,16 @@
 import {isEscEvent} from './utils.js';
-import {setPreviewDefaultScale} from './effect.js';
+import {
+  scaleControlBiggerButton,
+  scaleControlSmallerButton,
+  uploadForm,
+  setPreviewDefaultScale,
+  scaleDown,
+  scaleUp,
+  onEffectsChange,
+  clearEffect,
+  createEffectSlider,
+  closeEffectSlider
+} from './effect.js';
 
 const fileInput = document.querySelector('#upload-file');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
@@ -21,17 +32,26 @@ const closeUploadModal = () => {
   document.removeEventListener('keydown', onUploadModalEscPress);
   modalCloseButton.removeEventListener('click', closeUploadModal);
 
+  scaleControlSmallerButton.removeEventListener('click', scaleDown);
+  scaleControlBiggerButton.removeEventListener('click', scaleUp);
+  uploadForm.removeEventListener('change', onEffectsChange);
+  closeEffectSlider();
   fileInput.value = '';
 };
 
 const openUploadModal = () => {
-  setPreviewDefaultScale();
-
   imgUploadOverlay.classList.remove(hideClass);
   body.classList.add('modal-open');
 
   document.addEventListener('keydown', onUploadModalEscPress);
   modalCloseButton.addEventListener('click', closeUploadModal);
+
+  scaleControlSmallerButton.addEventListener('click', scaleDown);
+  scaleControlBiggerButton.addEventListener('click', scaleUp);
+  uploadForm.addEventListener('change', onEffectsChange);
+  setPreviewDefaultScale();
+  clearEffect();
+  createEffectSlider();
 };
 
 export {fileInput, openUploadModal};
