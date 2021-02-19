@@ -20,4 +20,9 @@ const isEnterEvent = (evt) => {
   return evt.key === 'Enter';
 };
 
-export {getRandom, checkStringLenght, isEscEvent, isEnterEvent};
+const getIntValue = (element) => {
+  const valueString = element.value;
+  return window.parseInt(valueString);
+};
+
+export {getRandom, checkStringLenght, isEscEvent, isEnterEvent, getIntValue};
