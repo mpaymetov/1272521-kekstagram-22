@@ -21,7 +21,7 @@ let imageScaleStyle = '';
 let imageEffectStyle = '';
 
 const EffectSliderSettings = {
-  'chrome': {
+  'CHROME': {
     range: {
       min: 0,
       max: 1,
@@ -29,7 +29,7 @@ const EffectSliderSettings = {
     step: 0.1,
     start: 1,
   },
-  'sepia': {
+  'SEPIA': {
     range: {
       min: 0,
       max: 1,
@@ -37,7 +37,7 @@ const EffectSliderSettings = {
     step: 0.1,
     start: 1,
   },
-  'marvin': {
+  'MARVIN': {
     range: {
       min: 0,
       max: 100,
@@ -45,7 +45,7 @@ const EffectSliderSettings = {
     step: 1,
     start: 100,
   },
-  'phobos': {
+  'PHOBOS': {
     range: {
       min: 0,
       max: 3,
@@ -53,7 +53,7 @@ const EffectSliderSettings = {
     step: 0.1,
     start: 3,
   },
-  'heat': {
+  'HEAT': {
     range: {
       min: 1,
       max: 3,
@@ -63,11 +63,11 @@ const EffectSliderSettings = {
   },
 }
 const ImageEffectStyles = {
-  'chrome': 'grayscale',
-  'sepia': 'sepia',
-  'marvin': 'invert',
-  'phobos': 'blur',
-  'heat': 'brightness',
+  'CHROME': 'grayscale',
+  'SEPIA': 'sepia',
+  'MARVIN': 'invert',
+  'PHOBOS': 'blur',
+  'HEAT': 'brightness',
 };
 
 const updateStyles = (element, style) => {
@@ -149,7 +149,7 @@ const setImageEffectStyle = () => {
   } else if (imageEffect === 'phobos') {
     effectValueName = 'px';
   }
-  imageEffectStyle = `filter: ${ImageEffectStyles[imageEffect]}(${effectLevelValue.value}${effectValueName});`;
+  imageEffectStyle = `filter: ${ImageEffectStyles[imageEffect.toUpperCase()]}(${effectLevelValue.value}${effectValueName});`;
   updateStyles(imagePreview, imageScaleStyle + imageEffectStyle);
 };
 
@@ -184,7 +184,7 @@ const createEffectSlider = () => {
 };
 
 const updateEffectSlider = (imageEffect) => {
-  effectLevelBar.noUiSlider.updateOptions(EffectSliderSettings[imageEffect]);
+  effectLevelBar.noUiSlider.updateOptions(EffectSliderSettings[imageEffect.toUpperCase()]);
 };
 
 const closeEffectSlider = () => {
