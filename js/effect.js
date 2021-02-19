@@ -20,7 +20,7 @@ let imageEffect = 'none';
 let imageScaleStyle = '';
 let imageEffectStyle = '';
 
-const effectSliderSettings = {
+const EffectSliderSettings = {
   'chrome': {
     range: {
       min: 0,
@@ -62,7 +62,7 @@ const effectSliderSettings = {
     start: 3,
   },
 }
-const imageEffectStyles = {
+const ImageEffectStyles = {
   'chrome': 'grayscale',
   'sepia': 'sepia',
   'marvin': 'invert',
@@ -130,8 +130,8 @@ const onEffectsChange = (evt) => {
     removeEffectClasses();
     imageEffect = evt.target.value;
     if (imageEffect !== 'none') {
-      updateEffectSlider(imageEffect);
       const effectClass = EFFECT_CLASS_START + imageEffect;
+      updateEffectSlider(imageEffect);
       imagePreview.classList.add(effectClass);
       if (effectLevelBar.classList.contains(hideClass)) {
         effectLevelBar.classList.remove(hideClass);
@@ -144,12 +144,12 @@ const onEffectsChange = (evt) => {
 
 const setImageEffectStyle = () => {
   let effectValueName = '';
-  if (imageEffect == 'marvin') {
+  if (imageEffect === 'marvin') {
     effectValueName = '%';
-  } else if (imageEffect == 'phobos') {
+  } else if (imageEffect === 'phobos') {
     effectValueName = 'px';
   }
-  imageEffectStyle = 'filter: ' + imageEffectStyles[imageEffect] + '(' + effectLevelValue.value + effectValueName + ');';
+  imageEffectStyle = `filter: ${ImageEffectStyles[imageEffect]}(${effectLevelValue.value}${effectValueName});`;
   updateStyles(imagePreview, imageScaleStyle + imageEffectStyle);
 };
 
@@ -184,7 +184,7 @@ const createEffectSlider = () => {
 };
 
 const updateEffectSlider = (imageEffect) => {
-  effectLevelBar.noUiSlider.updateOptions(effectSliderSettings[imageEffect]);
+  effectLevelBar.noUiSlider.updateOptions(EffectSliderSettings[imageEffect]);
 };
 
 const closeEffectSlider = () => {
