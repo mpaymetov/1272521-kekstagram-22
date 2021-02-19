@@ -1,4 +1,5 @@
 import {isEscEvent} from './utils.js';
+import {descriptionInput, hashtagsInput, onDescriptionInput, onHashtagInput} from './form.js';
 import {
   scaleControlBiggerButton,
   scaleControlSmallerButton,
@@ -7,7 +8,7 @@ import {
   scaleDown,
   scaleUp,
   onEffectsChange,
-  clearEffect,
+  setOriginalEffect,
   createEffectSlider,
   closeEffectSlider
 } from './effect.js';
@@ -20,8 +21,12 @@ const hideClass = 'hidden';
 
 const onUploadModalEscPress = (evt) => {
   if (isEscEvent(evt)) {
+    const isHashtagsInputNotFocus = hashtagsInput !== document.activeElement;
+    const isDescriptionInputNotFocus = descriptionInput !== document.activeElement;
     evt.preventDefault();
-    closeUploadModal();
+    if (isHashtagsInputNotFocus && isDescriptionInputNotFocus) {
+      closeUploadModal();
+    }
   }
 };
 
@@ -35,6 +40,10 @@ const closeUploadModal = () => {
   scaleControlSmallerButton.removeEventListener('click', scaleDown);
   scaleControlBiggerButton.removeEventListener('click', scaleUp);
   uploadForm.removeEventListener('change', onEffectsChange);
+
+  hashtagsInput.removeEventListener('input', onHashtagInput);
+  descriptionInput.removeEventListener('input', onDescriptionInput);
+
   closeEffectSlider();
   fileInput.value = '';
 };
@@ -49,9 +58,13 @@ const openUploadModal = () => {
   scaleControlSmallerButton.addEventListener('click', scaleDown);
   scaleControlBiggerButton.addEventListener('click', scaleUp);
   uploadForm.addEventListener('change', onEffectsChange);
-  setPreviewDefaultScale();
-  clearEffect();
+
+  hashtagsInput.addEventListener('input', onHashtagInput);
+  descriptionInput.addEventListener('input', onDescriptionInput);
+
   createEffectSlider();
+  setPreviewDefaultScale();
+  setOriginalEffect();
 };
 
 export {fileInput, openUploadModal};
