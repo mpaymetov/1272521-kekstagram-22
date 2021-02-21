@@ -8,8 +8,8 @@ const getRandom = (min = 0, max = 1) => {
   return Math.round((max - min) * Math.random() + min);
 };
 
-const checkStringLenght = (string = '', maxLenght = 0) => {
-  return string.length <= maxLenght;
+const checkStringLength = (string = '', maxLength = 0) => {
+  return string.length <= maxLength;
 };
 
 const isEscEvent = (evt) => {
@@ -25,4 +25,4 @@ const getIntValue = (element) => {
   return window.parseInt(valueString);
 };
 
-export {getRandom, checkStringLenght, isEscEvent, isEnterEvent, getIntValue};
+export {getRandom, checkStringLength, isEscEvent, isEnterEvent, getIntValue};

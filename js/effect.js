@@ -108,6 +108,12 @@ const clearEffect = () => {
   updateStyles(imagePreview, imageScaleStyle + imageEffectStyle);
 };
 
+const setOriginalEffect = () => {
+  const originalEffectButton = document.querySelector('#effect-none');
+  originalEffectButton.checked = true;
+  clearEffect();
+};
+
 const getEffectList = () => {
   let effectsList = [];
   const effectButtons = document.querySelectorAll('.effects__radio');
@@ -198,6 +204,7 @@ export {
   scaleDown,
   scaleUp,
   setPreviewDefaultScale,
+  setOriginalEffect,
   onEffectsChange,
   clearEffect,
   createEffectSlider,
