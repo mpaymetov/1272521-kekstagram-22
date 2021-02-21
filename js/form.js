@@ -41,7 +41,7 @@ const onHashtagInput = (evt) => {
 
 const onDescriptionInput = (evt) => {
   if (!checkStringLength(evt.target.value, DESCRIPTION_MAX_LENGTH)) {
-    evt.target.setCustomValidity('комментарий не может быть больше 140 символов');
+    evt.target.setCustomValidity(`комментарий не может быть больше ${DESCRIPTION_MAX_LENGTH} символов`);
   } else {
     evt.target.setCustomValidity('');
   }

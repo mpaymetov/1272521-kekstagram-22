@@ -30,6 +30,12 @@ const onUploadModalEscPress = (evt) => {
   }
 };
 
+const clearForm = () => {
+  fileInput.value = '';
+  hashtagsInput.value = '';
+  descriptionInput.value = '';
+}
+
 const closeUploadModal = () => {
   imgUploadOverlay.classList.add(hideClass);
   body.classList.remove('modal-open');
@@ -45,7 +51,7 @@ const closeUploadModal = () => {
   descriptionInput.removeEventListener('input', onDescriptionInput);
 
   closeEffectSlider();
-  fileInput.value = '';
+  clearForm();
 };
 
 const openUploadModal = () => {
