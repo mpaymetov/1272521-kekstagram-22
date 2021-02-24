@@ -14,6 +14,8 @@ const DESCRIPTION_MAX_LENGTH = 140;
 const RECEIVE_DATA_URL = 'https://22.javascript.pages.academy/kekstagram/data';
 const SEND_DATA_URL = 'https://22.javascript.pages.academy/kekstagram';
 
+const DOWNLOAD_ERROR_MESSAGE = 'Не удалось выполнить загрузку данных.';
+
 export {
   ALERT_SHOW_TIME,
   CONTROL_MAX_VALUE,
@@ -25,5 +27,6 @@ export {
   HASHTAGS_MAX_COUNT,
   DESCRIPTION_MAX_LENGTH,
   RECEIVE_DATA_URL,
-  SEND_DATA_URL
+  SEND_DATA_URL,
+  DOWNLOAD_ERROR_MESSAGE
 };

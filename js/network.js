@@ -4,14 +4,13 @@ const getData = (url, onSuccess, onError) => {
       if (responce.ok) {
         return responce.json();
       }
-
       throw new Error(`${responce.status} ${responce.statusText}`);
     })
-    .then((pict) => {
-      onSuccess(pict);
+    .then((data) => {
+      onSuccess(data);
     })
     .catch(() => {
-      onError('Не удалось выполнить загрузку данных.');
+      onError();
     })
 }
 
@@ -23,15 +22,12 @@ const sendData = (url, formData, onSuccess, onError) => {
     .then((responce) => {
       if (responce.ok) {
         return responce.json();
-      } else {
-        onError('Не удалось выполнить отправку формы. Попробуйте еще раз.');
       }
-
       throw new Error(`${responce.status} ${responce.statusText}`);
     })
     .then(() => onSuccess())
     .catch(() => {
-      onError('Не удалось выполнить отправку формы. Попробуйте еще раз.');
+      onError();
     })
 }
 

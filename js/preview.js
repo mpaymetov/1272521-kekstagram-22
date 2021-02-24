@@ -36,6 +36,8 @@ const onUploadModalEscPress = (evt) => {
 };
 
 const clearForm = () => {
+  setOriginalEffect();
+  setPreviewDefaultScale();
   fileInput.value = '';
   hashtagsInput.value = '';
   descriptionInput.value = '';
