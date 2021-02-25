@@ -12,7 +12,6 @@ const scaleControlValue = document.querySelector('.scale__control--value');
 const scaleControlSmallerButton = document.querySelector('.scale__control--smaller');
 const scaleControlBiggerButton = document.querySelector('.scale__control--bigger');
 
-const uploadForm = document.querySelector('.img-upload__form');
 const effectLevelBar = document.querySelector('.img-upload__effect-level');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const hideClass = 'hidden';
@@ -200,7 +199,6 @@ const closeEffectSlider = () => {
 export {
   scaleControlSmallerButton,
   scaleControlBiggerButton,
-  uploadForm,
   scaleDown,
   scaleUp,
   setPreviewDefaultScale,

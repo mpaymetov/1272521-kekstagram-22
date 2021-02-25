@@ -1,9 +1,14 @@
 import {isEscEvent} from './utils.js';
-import {descriptionInput, hashtagsInput, onDescriptionInput, onHashtagInput} from './form.js';
+import {
+  uploadForm,
+  descriptionInput,
+  hashtagsInput,
+  onDescriptionInput,
+  onHashtagInput
+} from './form.js';
 import {
   scaleControlBiggerButton,
   scaleControlSmallerButton,
-  uploadForm,
   setPreviewDefaultScale,
   scaleDown,
   scaleUp,
@@ -31,6 +36,8 @@ const onUploadModalEscPress = (evt) => {
 };
 
 const clearForm = () => {
+  setOriginalEffect();
+  setPreviewDefaultScale();
   fileInput.value = '';
   hashtagsInput.value = '';
   descriptionInput.value = '';
@@ -73,4 +80,4 @@ const openUploadModal = () => {
   setOriginalEffect();
 };
 
-export {fileInput, openUploadModal};
+export {fileInput, openUploadModal, closeUploadModal};

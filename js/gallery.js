@@ -1,6 +1,5 @@
 import {openPictureModal} from './modal.js';
 import {isEnterEvent} from './utils.js';
-import {getPhotosData} from './data.js';
 
 const pictureContainer = document.querySelector('.pictures');
 const pictureTemplateBlock = document.querySelector('#picture');
@@ -15,8 +14,7 @@ const renderPicture = (photoData) => {
   return element;
 };
 
-const renderPictures = () => {
-  const photosData = getPhotosData();
+const renderPictures = (photosData) => {
   let fragment = document.createDocumentFragment();
   photosData.forEach(element => fragment.appendChild(renderPicture(element)));
   pictureContainer.appendChild(fragment);
