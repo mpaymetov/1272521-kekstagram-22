@@ -9,8 +9,8 @@ const getData = (url, onSuccess, onError) => {
     .then((data) => {
       onSuccess(data);
     })
-    .catch(() => {
-      onError();
+    .catch((e) => {
+      onError(e);
     })
 }
 
@@ -26,8 +26,8 @@ const sendData = (url, formData, onSuccess, onError) => {
       throw new Error(`${responce.status} ${responce.statusText}`);
     })
     .then(() => onSuccess())
-    .catch(() => {
-      onError();
+    .catch((e) => {
+      onError(e);
     })
 }
 
