@@ -16,6 +16,9 @@ const SEND_DATA_URL = 'https://22.javascript.pages.academy/kekstagram';
 
 const DOWNLOAD_ERROR_MESSAGE = 'Не удалось выполнить загрузку данных.';
 
+const RANDOM_SORT_PHOTO_COUNT = 10;
+const SORT_THROTTLE_TIME = 500;
+
 export {
   ALERT_SHOW_TIME,
   CONTROL_MAX_VALUE,
@@ -28,5 +31,7 @@ export {
   DESCRIPTION_MAX_LENGTH,
   RECEIVE_DATA_URL,
   SEND_DATA_URL,
-  DOWNLOAD_ERROR_MESSAGE
+  DOWNLOAD_ERROR_MESSAGE,
+  RANDOM_SORT_PHOTO_COUNT,
+  SORT_THROTTLE_TIME
 };

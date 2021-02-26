@@ -1,18 +1,16 @@
 import {RECEIVE_DATA_URL} from './settings.js';
 import {fileInput, openUploadModal} from './preview.js';
-import {renderPictures, onPictureClick, onPictureEnterPress} from './gallery.js';
+import {renderPictures} from './gallery.js';
 import {getData} from './network.js';
 import {setPhotosData} from './data.js';
 import {setPhotoFormSubmit} from './form.js';
 import {showSuccessMessage, showErrorMessage, showDownloadErrorAlert} from './message.js';
+import {showSortButtons} from './sort.js';
 
 const onPhotoDataLoaded = (photoData) => {
   setPhotosData(photoData);
   renderPictures(photoData);
-
-  const pictures = document.querySelectorAll('a.picture');
-  pictures.forEach(element => element.addEventListener('click', onPictureClick));
-  pictures.forEach(element => element.addEventListener('keydown', onPictureEnterPress));
+  showSortButtons();
 }
 
 getData(RECEIVE_DATA_URL, onPhotoDataLoaded, showDownloadErrorAlert);

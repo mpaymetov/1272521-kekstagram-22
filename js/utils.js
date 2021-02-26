@@ -1,5 +1,15 @@
 import {ALERT_SHOW_TIME} from './settings.js';
 
+const getRandom = (min = 0, max = 1) => {
+  if (min < 0) {
+    return false;
+  }
+  if (max <= min) {
+    return min;
+  }
+  return Math.round((max - min) * Math.random() + min);
+};
+
 const checkStringLength = (string = '', maxLength = 0) => {
   return string.length <= maxLength;
 };
@@ -38,4 +48,4 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 }
 
-export {checkStringLength, isEscEvent, isEnterEvent, getIntValue, showAlert};
+export {getRandom, checkStringLength, isEscEvent, isEnterEvent, getIntValue, showAlert};
