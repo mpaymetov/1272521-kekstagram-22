@@ -14,10 +14,25 @@ const renderPicture = (photoData) => {
   return element;
 };
 
+const clearPictures = () => {
+  const pictures = pictureContainer.querySelectorAll('.picture');
+  pictures.forEach((picture) => {
+    picture.remove();
+  });
+};
+
+const setPicturesViewed = () => {
+  const pictures = document.querySelectorAll('a.picture');
+  pictures.forEach(element => element.addEventListener('click', onPictureClick));
+  pictures.forEach(element => element.addEventListener('keydown', onPictureEnterPress));
+};
+
 const renderPictures = (photosData) => {
   let fragment = document.createDocumentFragment();
   photosData.forEach(element => fragment.appendChild(renderPicture(element)));
+  clearPictures();
   pictureContainer.appendChild(fragment);
+  setPicturesViewed();
 };
 
 const onPictureClick = (evt) => {
@@ -32,4 +47,4 @@ const onPictureEnterPress = (evt) => {
   }
 };
 
-export {renderPictures, onPictureClick, onPictureEnterPress};
+export {renderPictures};
