@@ -13,11 +13,17 @@ const buttonDiscussedSort = document.querySelector('#filter-discussed');
 const filtersButtonActiveClass = 'img-filters__button--active';
 
 const commentSort = (a, b) => {
-  return a.comments.length < b.comments.length;
+  if (a.comments.length < b.comments.length) {
+    return 1;
+  } else if (a.comments.length > b.comments.length) {
+    return -1;
+  } else {
+    return 0;
+  }
 };
 
 const shuffleSort = () => {
-  return getRandom();
+  return getRandom(0, 2) - 1;
 };
 
 const sortBy = (data, sortFunction) => {
