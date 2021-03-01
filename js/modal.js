@@ -6,6 +6,7 @@ const bigPictureBlock = document.querySelector('.big-picture');
 const bigPictureImage = bigPictureBlock.querySelector('.big-picture__img img');
 const bigPictureLikes = bigPictureBlock.querySelector('.likes-count');
 const bigPictureCommentCount = bigPictureBlock.querySelector('.comments-count');
+const bigPictureCommentShowCount = bigPictureBlock.querySelector('.comments-show-count');
 const bigPictureCommentsBlock = bigPictureBlock.querySelector('.social__comments');
 const bigPictureDescription = bigPictureBlock.querySelector('.social__caption');
 const bigPictureCommentsLoader = bigPictureBlock.querySelector('.comments-loader');
@@ -47,10 +48,13 @@ const onCommentShowMore = () => {
   photoShowStep++;
   const photoShowTo = photoShowStep * COMMENTS_TO_SHOW_COUNT;
 
+  bigPictureCommentShowCount.textContent = photoShowTo;
+
   const commentDataBlock = photoCommentsData.slice(photoShowFrom, photoShowTo);
   renderComments(commentDataBlock);
 
   if (photoShowTo >= photoCommentsData.length) {
+    bigPictureCommentShowCount.textContent = photoCommentsData.length;
     bigPictureCommentsLoader.removeEventListener('click', onCommentShowMore);
     if (!bigPictureCommentsLoader.classList.contains('hidden')) {
       bigPictureCommentsLoader.classList.add('hidden');
