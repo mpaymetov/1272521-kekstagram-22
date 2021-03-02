@@ -1,3 +1,4 @@
+import {UPLOAD_FILE_TYPES} from './settings.js';
 import {isEscEvent} from './utils.js';
 import {
   uploadForm,
@@ -23,6 +24,7 @@ const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
 const modalCloseButton = document.querySelector('#upload-cancel');
 const hideClass = 'hidden';
+const imagePreview = document.querySelector('.img-upload__preview img');
 
 const onUploadModalEscPress = (evt) => {
   if (isEscEvent(evt)) {
@@ -61,7 +63,27 @@ const closeUploadModal = () => {
   clearForm();
 };
 
+const showPhotoPreview = () => {
+  const file = fileInput.files[0];
+  const fileName = file.name.toLowerCase();
+
+  const matches = UPLOAD_FILE_TYPES.some((it) => {
+    return fileName.endsWith(it);
+  });
+
+  if (matches) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+      imagePreview.src = reader.result;
+    });
+
+    reader.readAsDataURL(file);
+  }
+};
+
 const openUploadModal = () => {
+  showPhotoPreview();
   imgUploadOverlay.classList.remove(hideClass);
   body.classList.add('modal-open');
 
