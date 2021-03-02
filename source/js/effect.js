@@ -1,3 +1,5 @@
+import noUiSlider from 'nouislider';
+import 'nouislider/distribute/nouislider.css';
 import {
   CONTROL_MAX_VALUE,
   CONTROL_MIN_VALUE,
@@ -159,8 +161,6 @@ const setImageEffectStyle = () => {
 };
 
 const createEffectSlider = () => {
-  /*global noUiSlider*/
-  /*eslint no-undef: "error"*/
   noUiSlider.create(effectLevelBar, {
     range: {
       min: 0,
