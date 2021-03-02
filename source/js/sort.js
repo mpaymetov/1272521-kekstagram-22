@@ -1,5 +1,4 @@
-/* global _:readonly */
-
+import _ from 'lodash';
 import {RANDOM_SORT_PHOTO_COUNT, SORT_THROTTLE_TIME} from './settings.js';
 import {getRandom} from './utils.js';
 import {getPhotosData} from './data.js';
