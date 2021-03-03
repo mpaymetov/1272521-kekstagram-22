@@ -2,6 +2,7 @@ import {checkStringLength} from './utils.js';
 import {HASHTAGS_DELIMITER, HASHTAGS_MAX_COUNT, DESCRIPTION_MAX_LENGTH, SEND_DATA_URL} from './settings.js';
 import {sendData} from './network.js';
 import {closeUploadModal} from './preview.js';
+import {showErrorMessage, showSuccessMessage} from './message.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const hashtagsInput = document.querySelector('.text__hashtags');
@@ -51,14 +52,20 @@ const onDescriptionInput = (evt) => {
   evt.target.reportValidity();
 };
 
-const setPhotoFormSubmit = (onSuccess, onError) => {
-  uploadForm.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const formData = new FormData(evt.target);
-    sendData(SEND_DATA_URL, formData, onSuccess, onError);
-    closeUploadModal();
-  })
-}
+const onPhotoFormSubmit = (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(evt.target);
+  sendData(SEND_DATA_URL, formData, showSuccessMessage, showErrorMessage);
+  closeUploadModal();
+};
+
+const setPhotoFormSubmit = () => {
+  uploadForm.addEventListener('submit', onPhotoFormSubmit);
+};
+
+const unsetPhotoFormSubmit = () => {
+  uploadForm.removeEventListener('submit', onPhotoFormSubmit);
+};
 
 export {
   uploadForm,
@@ -66,5 +73,6 @@ export {
   descriptionInput,
   onHashtagInput,
   onDescriptionInput,
-  setPhotoFormSubmit
+  setPhotoFormSubmit,
+  unsetPhotoFormSubmit
 };
