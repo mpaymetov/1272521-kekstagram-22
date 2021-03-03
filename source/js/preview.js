@@ -5,7 +5,9 @@ import {
   descriptionInput,
   hashtagsInput,
   onDescriptionInput,
-  onHashtagInput
+  onHashtagInput,
+  setPhotoFormSubmit,
+  unsetPhotoFormSubmit
 } from './form.js';
 import {
   scaleControlBiggerButton,
@@ -61,6 +63,7 @@ const closeUploadModal = () => {
 
   closeEffectSlider();
   clearForm();
+  unsetPhotoFormSubmit();
 };
 
 const showPhotoPreview = () => {
@@ -100,6 +103,7 @@ const openUploadModal = () => {
   createEffectSlider();
   setPreviewDefaultScale();
   setOriginalEffect();
+  setPhotoFormSubmit();
 };
 
 export {fileInput, openUploadModal, closeUploadModal};
