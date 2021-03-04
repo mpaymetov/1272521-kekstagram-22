@@ -44,7 +44,11 @@ const clearForm = () => {
   setPreviewDefaultScale();
   fileInput.value = '';
   hashtagsInput.value = '';
+  hashtagsInput.setCustomValidity('');
+  hashtagsInput.reportValidity();
   descriptionInput.value = '';
+  descriptionInput.setCustomValidity('');
+  descriptionInput.reportValidity();
 }
 
 const closeUploadModal = () => {

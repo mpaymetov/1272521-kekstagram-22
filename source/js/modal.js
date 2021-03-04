@@ -108,14 +108,14 @@ const renderPictureModalData = (pictureData) => {
 const getPhotoId = (evt) => {
   const target = evt.currentTarget;
   if (target.dataset.photoId !== undefined) {
-    return target.dataset.photoId;
+    return Number(target.dataset.photoId);
   }
 };
 
 const getPhotoDataById = (photoId) => {
   const photosData = getPhotosData();
   return photosData.find((element) => {
-    return element.id == photoId;
+    return element.id === photoId;
   });
 };
 
