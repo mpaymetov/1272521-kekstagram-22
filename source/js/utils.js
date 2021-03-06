@@ -29,6 +29,7 @@ const getIntValue = (element) => {
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
+
   alertContainer.style.zIndex = '100';
   alertContainer.style.position = 'absolute';
   alertContainer.style.left = '0';
@@ -40,7 +41,6 @@ const showAlert = (message) => {
   alertContainer.style.backgroundColor = 'red';
 
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
 
   setTimeout(() => {
